@@ -1,0 +1,14 @@
+<div class="expense-list">
+  <h3>Lista de Transações</h3>
+  <ul>
+    <li *ngFor="let expense of filteredTransactions" [ngClass]="expense?.type">
+      <div class="expense-info">
+        <span class="expense-value">{{ expense?.value }}</span>
+        <div class="expense-details">
+          <p class="description">{{ expense?.description }}</p>
+          <p class="date">{{ expense?.createdAt }}</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

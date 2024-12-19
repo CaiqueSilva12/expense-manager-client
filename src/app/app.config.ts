@@ -1,16 +1,19 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { authInterceptorFn } from './interceptors/http.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimations(),
     provideToastr(),
-    provideHttpClient(withFetch())
+    provideAnimationsAsync(),
+    importProvidersFrom(HttpClientModule),
+    provideHttpClient(withInterceptors([authInterceptorFn]))
   ]
 };

@@ -1,24 +1,37 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginResponse } from '../types/login-response.type';
+import { Observable } from 'rxjs';
 import { tap } from 'rxjs';
+import { environment } from '../../../environment';
+
+type LoginResponse = {
+  token: string;
+  message: string;
+  user: {
+    id: string;
+    name: string;
+    email: string;
+  };
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  private apiUrl = environment.apiUrl;
 
-  constructor(
-    private httpClient: HttpClient
-  ) { }
+  constructor(private httpClient: HttpClient) {}
 
-  login(name: string, password: string) {
-    return this.httpClient.post<LoginResponse>("login", {name, password}).pipe(
-      tap((value) => {
-        sessionStorage.setItem("auth-token", value.token)
-        sessionStorage.setItem("username", value.name)
-
+  login(email: string, password: string): Observable<LoginResponse> {
+    return this.httpClient.post<LoginResponse>(`${this.apiUrl}/api/login`, { email, password }).pipe(
+      tap((response) => {
+        console.log(response);
+        
+        sessionStorage.setItem('auth-token', response.token);
+        sessionStorage.setItem('username', response.user.name);
+        sessionStorage.setItem('email', response.user.email);
+        sessionStorage.setItem('userid', response.user.id);
       })
-    )
+    );
   }
 }

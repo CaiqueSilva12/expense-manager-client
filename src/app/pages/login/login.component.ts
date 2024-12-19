@@ -39,9 +39,14 @@ export class LoginComponent {
       this.loginForm.value.email,
       this.loginForm.value.password
     ).subscribe({
-      next: () => this.toastr.success("Login realizado com sucesso"),
-      error: () => this.toastr.error("Error ao tentar fazer login")
-    })
+      next: (response) => {
+        this.toastr.success(response.message);
+        this.router.navigate(["/home"]);
+      },
+      error: (error) => {
+        this.toastr.error(error.error.error)
+      }
+    });
   }
 
   navigate() {

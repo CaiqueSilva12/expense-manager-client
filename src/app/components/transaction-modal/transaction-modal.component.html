@@ -1,0 +1,33 @@
+<div class="modal-background">
+  <div class="modal-content">
+    <h3>{{ transactionType === 'revenue' ? 'Adicionar Receita' : 'Adicionar Despesa' }}</h3>
+    <form (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="value">Valor</label>
+        <input
+          type="number"
+          id="value"
+          [(ngModel)]="amount"
+          name="amount"
+          required
+          placeholder="Digite o valor"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Descrição</label>
+        <input
+          type="text"
+          id="description"
+          [(ngModel)]="description"
+          name="description"
+          required
+          placeholder="Digite a descrição"
+        />
+      </div>
+      <div class="button-group">
+        <button type="submit" class="btn-submit">Adicionar</button>
+        <button type="button" (click)="close.emit()" class="btn-close">Fechar</button>
+      </div>
+    </form>
+  </div>
+</div>

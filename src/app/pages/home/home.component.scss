@@ -1,0 +1,36 @@
+.home-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 30px 30px 90px;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(240, 235, 235);
+  overflow-y: auto;
+
+  .cards-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .cards-container app-card:first-child {
+    margin-right: auto;
+  }
+
+  app-expense-list {
+    height: calc(100% - 150px);
+    overflow-y: auto;
+  }
+}
+
+app-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: #333;
+  color: #fff;
+  z-index: 2;
+}

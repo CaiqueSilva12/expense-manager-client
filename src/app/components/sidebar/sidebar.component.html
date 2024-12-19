@@ -1,0 +1,10 @@
+<nav class="sidebar">
+  <ul class="sidebar-menu">
+    <li class="menu-item" *ngFor="let route of routes">
+      <a [routerLink]="route.path" routerLinkActive="active" class="menu-link">
+        <mat-icon class="menu-icon">{{ route.icon }}</mat-icon>
+        <!-- <span class="menu-text">{{ route.name }}</span> -->
+      </a>
+    </li>
+  </ul>
+</nav>

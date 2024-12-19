@@ -35,6 +35,17 @@ main {
       margin-bottom: 45px;
     }
 
+    .main-title {
+      font-size: 35px;
+      color: $secondary-color;
+
+      box-shadow: 1px;
+      margin-bottom: 30px;
+      padding: 4px;
+      text-shadow: 
+      2px 1px 0px mix($secondary-color, black, 30%), 
+    }
+
     .btn-wrapper {
       display: flex;
       flex-direction: column;

@@ -1,0 +1,35 @@
+<app-sidebar></app-sidebar>
+<div class="home-content">
+  <div class="cards-container">
+    <app-card
+      [title]="'Saldo'"
+      [value]="balance | currency:'BRL'"
+      [type]="'balance'"
+      [icon]="'account_balance'"
+    ></app-card>
+    <app-card
+      [title]="'Receita'"
+      [value]="revenue | currency:'BRL'"
+      [type]="'revenue'"
+      [icon]="'arrow_upward'"
+      (cardClick)="onCardClick('revenue')"
+    ></app-card>
+    <app-card
+      [title]="'Despesa'"
+      [value]="expense | currency:'BRL'"
+      [type]="'expense'"
+      [icon]="'arrow_downward'"
+      (cardClick)="onCardClick('expense')"
+    ></app-card>
+  </div>
+
+  <app-date-filter (filterChanged)="onFilterChange($event)"></app-date-filter>
+
+  <app-expense-list [transactions]="transactions"></app-expense-list>
+
+  <app-transaction-modal
+    *ngIf="showModal"
+    [transactionType]="transactionType"
+    (close)="closeModal()"
+  ></app-transaction-modal>
+</div>

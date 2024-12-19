@@ -1,0 +1,16 @@
+<div class="card" [ngClass]="type" (click)="onCardClick()">
+  <div class="card-content">
+    <div class="text-content">
+      <h3>{{ title }}</h3>
+      <p>{{ value }}</p>
+    </div>
+    <div class="icon-container">
+      <mat-icon class="icon" [ngClass]="{
+        'green': type === 'revenue',
+        'red': type === 'expense',
+        'blue': type === 'balance',
+        'purple': type === 'credit_card'
+      }">{{ icon }}</mat-icon>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="date-filter">
+  <div class="select-container">
+    <label for="month">Mês</label>
+    <select id="month" [(ngModel)]="selectedMonth" (change)="onFilterChange()">
+      <option *ngFor="let month of months" [value]="month.value">
+        {{ month.label }}
+      </option>
+    </select>
+
+    <label for="year">Ano</label>
+    <select id="year" [(ngModel)]="selectedYear" (change)="onFilterChange()">
+      <option [value]="currentYear - 2">{{ currentYear - 2 }}</option>
+      <option [value]="currentYear - 1">{{ currentYear - 1 }}</option>
+      <option [value]="currentYear">{{ currentYear }}</option>
+    </select>
+  </div>
+</div>

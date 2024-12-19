@@ -1,7 +1,8 @@
 <app-default-login-layout
-  title="Login into your account"
-  primaryBtnText="Login Now"
-  secondaryBtnText="Signup Now"
+  mainTitle="Expense Manager"
+  title="Entre na sua conta"
+  primaryBtnText="Entrar agora"
+  secondaryBtnText="Inscreva-se agora"
   (submit)="submit()"
   (navigate)="navigate()"
   [disablePrimaryBtn]="!loginForm.valid"
@@ -20,10 +21,10 @@
       formControlName="password"
       inputName="password"
       type="password"
-      label="Your Password"
+      label="Senha"
     >
       <img src="/assets/svg/password-icon.svg">
     </app-primary-input>
-    <span>Forgot Password</span>
+    <span>Esqueceu a senha?</span>
   </form>
 </app-default-login-layout>
