@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { Transaction, TransactionService } from '../../services/transaction.service';
 import { tap } from 'rxjs';
+import { Router } from '@angular/router';
 import { DateFilterComponent } from '../../components/date-filter/date-filter.component';
 
 @Component({
@@ -38,6 +39,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private userService: UserService,
     private transactionService: TransactionService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -68,6 +70,9 @@ export class HomeComponent implements OnInit {
       },
       error: (error) => {
         console.error('Erro ao obter saldo:', error);
+        if (error.status === 401) {
+          this.router.navigate(['/']);
+        }
       }
     });
   }

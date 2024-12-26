@@ -24,6 +24,17 @@
           placeholder="Digite a descrição"
         />
       </div>
+      <div class="form-group" *ngIf="transactionType === 'expense'">
+        <label for="category">Categoria</label>
+        <input
+          type="text"
+          id="category"
+          [(ngModel)]="category"
+          name="category"
+          placeholder="Digite a categoria"
+        />
+      </div>
+
       <div class="button-group">
         <button type="submit" class="btn-submit">Adicionar</button>
         <button type="button" (click)="close.emit()" class="btn-close">Fechar</button>

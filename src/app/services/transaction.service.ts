@@ -8,6 +8,7 @@ export interface Transaction {
   id: string;
   amount: number;
   type: string;
+  category: string;
   description: string;
   createdAt: string;
 }
@@ -23,6 +24,7 @@ export class TransactionService {
   createTransaction(transactionData: {
     user: string;
     type: string;
+    category: string;
     amount: number;
     description: string;
     month: number;

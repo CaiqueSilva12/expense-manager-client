@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TransactionService } from '../../services/transaction.service';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-transaction-modal',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './transaction-modal.component.html',
   styleUrls: ['./transaction-modal.component.scss'],
 })
@@ -18,6 +19,7 @@ export class TransactionModalComponent {
 
   amount: number = 0;
   description: string = '';
+  category: string = '';
 
   constructor(
     private transactionService: TransactionService,
@@ -33,9 +35,10 @@ export class TransactionModalComponent {
       type: this.transactionType,
       amount: this.amount,
       description: this.description,
+      category: this.transactionType === 'expense' ? this.category || '' : '',
       month: currentDate.getMonth() + 1,
       year: currentDate.getFullYear(),
-    };
+    };;
 
     this.transactionService.createTransaction(transactionData).subscribe({
       next: () => {
