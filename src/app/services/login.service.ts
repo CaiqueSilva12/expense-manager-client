@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs';
-import { environment } from '../../../environment';
+import { environment } from '../../environments/environment';
 
 type LoginResponse = {
   token: string;
