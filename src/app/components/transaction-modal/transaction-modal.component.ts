@@ -42,8 +42,6 @@ export class TransactionModalComponent {
 
     this.transactionService.createTransaction(transactionData).subscribe({
       next: () => {
-        console.log('Transação criada com sucesso!');
-
         if (this.transactionType === 'revenue') {
           this.toastr.success('Receita adicionada!');
         } else if (this.transactionType === 'expense') {

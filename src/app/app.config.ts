@@ -6,6 +6,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { authInterceptorFn } from './interceptors/http.interceptor';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideToastr(),
     provideAnimationsAsync(),
     importProvidersFrom(HttpClientModule),
-    provideHttpClient(withInterceptors([authInterceptorFn]))
+    provideHttpClient(withInterceptors([authInterceptorFn, LoadingInterceptor])),
+    provideAnimationsAsync()
   ]
 };

@@ -22,7 +22,6 @@ export class CardComponent {
   constructor() {}
 
   onCardClick() {
-    console.log('Card clicado! Tipo: ', this.type);
     this.cardClick.emit(this.type);
   }
 }

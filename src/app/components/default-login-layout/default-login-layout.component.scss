@@ -100,4 +100,18 @@ main {
       }
     }
   }
+
+  @media (max-width: 820px) {
+    flex-direction: column;
+
+    .main-section {
+      display: none;
+    }
+
+    .form-section {
+      flex-grow: 1;
+      width: 100%;
+      padding: 16px;
+    }
+  }
 }

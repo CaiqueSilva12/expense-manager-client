@@ -13,8 +13,27 @@
     justify-content: flex-start;
     gap: 20px;
     flex-wrap: wrap;
-  }
-
+  
+    app-card:first-child {
+      margin-right: auto;
+    }
+  
+    @media (max-width: 820px) {
+      app-card {
+        flex: 1 1 calc(100% - 20px);
+    
+        &:nth-child(1) {
+          flex: 1 1 100%;
+        }
+    
+        &:nth-child(2),
+        &:nth-child(3) {
+          flex: 1 1 calc(50% - 10px);
+        }
+      }
+    }
+  }  
+  
   .cards-container app-card:first-child {
     margin-right: auto;
   }
@@ -22,6 +41,10 @@
   app-expense-list {
     height: calc(100% - 150px);
     overflow-y: auto;
+  }
+
+  @media (max-width: 820px) {
+    padding: 90px 20px 20px;
   }
 }
 
@@ -33,4 +56,9 @@ app-sidebar {
   background-color: #333;
   color: #fff;
   z-index: 2;
+
+  @media (max-width: 820px) {
+    height: auto;
+    width: 100%;
+  }
 }
